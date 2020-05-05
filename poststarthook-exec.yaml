@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-poststart-hook
+spec:
+  containers:
+  - image: ashishrpandey/appzeke
+    name: myapp
+    lifecycle:
+      postStart:
+        exec:
+          command: 
+          - sh
+          - -c
+          - "echo 'hook will succeed after 5 seconds' >/postSart.log; sleep 5 ; exit 0"
